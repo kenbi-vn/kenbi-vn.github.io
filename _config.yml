@@ -1,13 +1,13 @@
 # Site settings
 title:          Quasar
-description:    "Blog Cá Nhân"
+description:    "Đặng Minh Đông"
 baseurl:        "/jekyll-one"
-url:            "https://gingnero.github.io/jekyll-one"
+url:            "https://dongpro123.github.io/jekyll-one"
 
 # Author
 author:
-  name:         Ging
-  email:        123@abc.com
+  name:         Đông
+  email:        123@321.vn
 
 # Build settings
 markdown:       kramdown
