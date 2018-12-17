@@ -1,7 +1,7 @@
 # Site settings
 title:          Quasar
 description:    "Đặng Minh Đông"
-baseurl:        "/"
+baseurl:        "https://dongpro123.gthub.io"
 url:            "https://dongpro123.github.io"
 
 # Author
