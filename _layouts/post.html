@@ -7,75 +7,12 @@ layout: default
 <style>
 .blog_info,.breadcrumb,ul.blog{border-bottom:1px solid #a8d9f6}.blog_info .thumb_blog img,ul.blog li.thumb_blog img{border-radius:5px}ul.blog{background-color:#FFF;padding-top:5px;padding-bottom:6px}ul.blog li.thumb_blog{float:left;margin-left:5px;margin-top:4px;transition:all .3s;-moz-transition:all .3s;-webkit-transition:all .3s;-o-transition:all .3s}ul.blog li.thumb_blog img:hover{margin-top:1px;opacity:.6}ul.blog li.info_blog{margin-left:51px}ul.blog li.info_blog span.title_blog{display:block;font-weight:700;padding-bottom:3px}ul.blog li.info_blog span.view_blog{font-size:11px;color:gray}ul.blog li.info_blog span.view_blog img{margin-right:4px}ul.blog li.info_blog span.cate_blog,ul.blog li.info_blog span.time{font-size:11px;color:gray;display:block;margin-bottom:1px}ul.blog li.info_blog span.cate_blog img{margin-right:2px}.breadcrumb{background:#fff;color:#0d6aa9;padding:6px}.breadcrumb a{color:#0d6aa9;font-weight:700}.content_blog{background-color:#FFF;padding:8px}.content_blog h2{font-size:14px;font-weight:400}.blog_info{background-color:#FFF;padding-top:5px;padding-bottom:6px}.blog_info .thumb_blog{float:left;margin:2px 5px 5px}.blog_info .thumb_blog label{display:block;margin:2px 9px}.blog_info .more_info{margin-left:51px}.blog_info .more_info .row{display:block;font-weight:700;padding-bottom:3px}.blog_info .more_info .row.tit h1{font-size:12px}.blog_info .more_info .row.more{font-size:10.5px;color:gray}.blog_info .more_info .row.more img{margin-right:3px}
 </style>
-<script src="https://www.gstatic.com/firebasejs/4.8.1/firebase-app.js" type="11dc99d3b5b3033eee713625-text/javascript"></script>
-<script src="https://www.gstatic.com/firebasejs/4.8.1/firebase-database.js" type="11dc99d3b5b3033eee713625-text/javascript"></script>
-<script type="11dc99d3b5b3033eee713625-text/javascript">var config={apiKey:"AIzaSyAkxcxsifSvTSZvNxNCNaEsbAyMQl23ytU",authDomain:"xzss-73ea5.firebaseapp.com",databaseURL:"https://xzss-73ea5.firebaseio.com",projectId:"xzss-73ea5",storageBucket:"xzss-73ea5.appspot.com",messagingSenderId:"563790139873",appId:"1:563790139873:web:a963bd36f426b960b542a0"};firebase.initializeApp(config);</script>
-<script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js' type="11dc99d3b5b3033eee713625-text/javascript"></script>
-<script type="11dc99d3b5b3033eee713625-text/javascript">
-
-    // You can use the code below as-is.
-    //rootRef is a reference to the whole Firebase database.
-    const rootRef = firebase.database().ref();
-    // pageCountRef is just the node that tracks hits
-    const pageCountsRef = rootRef.child("pageCounts");
 
 
-    //Gets the key and current hit count for the page (if it exists)
-    let getHistory = new Promise(function (resolve, reject) {
-      //Create an object to store copy of the saved db data.
-      let obj = {};
-      pageCountsRef.orderByChild("page").equalTo(189).once("value", function (snapshot) {
-        snapshot.forEach(function (child) {
-          obj = {
-            key: child.key,
-            count: child.val().count
-          }
-        });
-        if (obj) {
-          resolve(obj);
-        } else {
-          reject(error);
-        }
-      });
-    });
-    //When getHistory promise resoves, the key is either undefined (page not in the database),
-    //Or key is a string that uniquely identifies the page in the database.
-    getHistory.then(function (fromResolve) {
-      var key = fromResolve.key;
-      var pastcounts = fromResolve.count;
-      //If key is undefined, create a new key for this database item.
-      if (key == undefined) {
-        key = pageCountsRef.push().key;
-        pastcounts = 0;
-      }
-      //Total hits to date.
-      counts = pastcounts + 1;
-      //Gather info to post
-      var postData = {
-        page: 189,
-        count: counts,
-      }
-
-      var updates = {}
-      updates["/pageCounts/" + key] = postData;
-      rootRef.update(updates);
-    }).catch(function (fromReject) {
-      console.log(error);
-    })
-  </script>
 <div class="blog_info"><div class="thumb_blog"><img src="https://images.weserv.nl/?url=https://i.imgur.com/2WggRA5.jpg&w=120&h=120&mask=circle" alt="Avatar" width="60px" height="60px"></div>
 <div class="more_info"><span class="row tit"><i class="fa fa-github"></i> <a href="#"> {% if page.author %}{{ page.author }}{% else %}{{ site.author.name }}{% endif %} </a></span><span class="row more"><i class="fa fa-clock-o"></i> {{ page.date | date: "%B %d, %Y" }} </span>
-<span class="row more">
-<i class="fa fa-eye" aria-hidden="true"></i>
-<span id="pageviews"></span>
-<script type="11dc99d3b5b3033eee713625-text/javascript">
-firebase.database().ref('pageCounts').orderByChild("page").equalTo(189).on("child_added", function(snapshot) {
-    var newCount = snapshot.val().count;
 
-    $("#pageviews").prepend(newCount);
-}); 
-</script>
-</span><span class="row more"><label><a href="https://www.facebook.com/sharer.php?u=#" target="_blank" title="Share Facebook"><i class="fa fa-facebook-square fa-2x"></i></a>
+<span class="row more"><label><a href="https://www.facebook.com/sharer.php?u=#" target="_blank" title="Share Facebook"><i class="fa fa-facebook-square fa-2x"></i></a>
 <a href="https://twitter.com/share?url=#>&text=Simple Share Buttons" target="_blank" title="Share Twitter"><i class="fa fa-twitter-square fa-2x"></i></a></label></span></div></div>
 
 
