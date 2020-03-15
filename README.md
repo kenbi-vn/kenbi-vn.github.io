@@ -1,1 +1,2 @@
-# Jekyll.gq
+# Đặng Minh Đông
+# Buid Jelky
