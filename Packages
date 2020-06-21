@@ -1,0 +1,15 @@
+Package: dong.menuff.com-1
+Name: Hack Menu FreeFire
+Version: 1.0
+Architecture: iphoneos-arm
+Essential: yes
+Author: KenBi
+Maintainer: QM 
+Section: Hack Game
+Description: Hack Menu FreeFire
+Depiction: https://jkuibap.tk/description.html?id=hackff
+Filename: ./debs/freegar_1.49.0_iphoneos-arm.deb
+Size: 129962
+MD5sum: f4f7ef5562fa1385d8e1badb352be2d3
+SHA1: 7185499cf96a482035a4cc9c6cd9679473e7c656
+SHA256: d75613dac0118e21b3b8353c1b886c4454a584b07097e4a64aa4912f348f4077
