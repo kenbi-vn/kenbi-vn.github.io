@@ -10,6 +10,34 @@
 
 <main role="main" class="container">
 
+<div class="progress" style="height: 30px">
+    <div id="myprogress" class="progress-bar bg-dark" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+        
+    </div>
+</div>
+<button class="btn btn-success mt-4" onclick="setprogress()">Chạy thử</button>
+<script>
+function setprogress() {
+    console.log('setprogress');
+    var current_value = parseInt($('#myprogress').attr('aria-valuenow'));
+    if (current_value >=100)
+    {
+        return;
+    }
+    else {
+        current_value++;
+        $('#myprogress')
+            .attr({'aria-valuenow':current_value})
+            .text('Hoàn thành '+current_value+' %')
+            .css({'width':current_value+'%'})
+
+    }
+
+    setTimeout(setprogress,100)
+}
+</script>
+
+
 <div id="menu1">
 <div class="d-flex align-items-center p-3 my-3 text-white-50 bg-purple rounded shadow-sm"><svg class="bi bi-code-slash mr-3" width="48" height="48" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.854 4.146a.5.5 0 010 .708L1.707 8l3.147 3.146a.5.5 0 01-.708.708l-3.5-3.5a.5.5 0 010-.708l3.5-3.5a.5.5 0 01.708 0zm6.292 0a.5.5 0 000 .708L14.293 8l-3.147 3.146a.5.5 0 00.708.708l3.5-3.5a.5.5 0 000-.708l-3.5-3.5a.5.5 0 00-.708 0zm-.999-3.124a.5.5 0 01.33.625l-4 13a.5.5 0 01-.955-.294l4-13a.5.5 0 01.625-.33z" clip-rule="evenodd"/></svg><div class="lh-100"><h6 class="mb-0 text-white lh-100">POKE</h6><small>Website vô danh</small></div></div><div class="my-3 p-3 bg-white rounded shadow-sm"><h6 class="border-bottom border-gray pb-2 mb-0">Thông tin mới</h6><div class="media text-muted pt-3"><svg class="bd-placeholder-img mr-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 32x32"><title>Placeholder</title><rect width="100%" height="100%" fill="#007bff"/><text x="50%" y="50%" fill="#007bff" dy=".3em">32x32</text></svg><p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray"><strong class="d-block text-gray-dark">@username</strong>
         Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.
